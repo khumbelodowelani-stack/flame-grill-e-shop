@@ -116,6 +116,18 @@ export const Cart = ({ open, onClose }: CartProps) => {
                 </Button>
 
                 <Button
+                  onClick={() => {
+                    // Placeholder for online ordering functionality
+                    alert("Online ordering coming soon! For now, please use WhatsApp.");
+                  }}
+                  variant="outline"
+                  className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  size="lg"
+                >
+                  Order Online
+                </Button>
+
+                <Button
                   onClick={clearCart}
                   variant="outline"
                   className="w-full hover:border-destructive hover:text-destructive"
