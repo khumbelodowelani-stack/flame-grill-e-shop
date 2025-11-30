@@ -4,6 +4,7 @@ export interface MenuItem {
   prices: { size: string; price: number }[];
   category: string;
   description?: string;
+  image?: string;
 }
 
 export const menuData: MenuItem[] = [
@@ -70,3 +71,12 @@ export const categories = [
   "Rib Fest",
   "Gatsby's",
 ];
+
+// Category images mapping
+export const categoryImages: Record<string, string> = {
+  "Pizzas": "pizza",
+  "Burgers & Toasties": "burger",
+  "Grills": "wings",
+  "Rib Fest": "ribs",
+  "Gatsby's": "gatsby",
+};
