@@ -18,16 +18,31 @@ export const Cart = ({ open, onClose }: CartProps) => {
   const { items, updateQuantity, removeItem, total, clearCart } = useCart();
 
   const handleWhatsAppOrder = () => {
-    const orderMessage = items
-      .map(
-        (item) =>
-          `${item.name} ${item.size ? `(${item.size})` : ""} x${item.quantity} - R${
-            item.price * item.quantity
-          }`
-      )
-      .join("\n");
+    if (items.length === 0) {
+      return;
+    }
 
-    const message = `Hi! I'd like to order:\n\n${orderMessage}\n\nTotal: R${total}`;
+    // Format order details
+    const orderItems = items
+      .map((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        return `${index + 1}. ${item.name}${item.size ? ` (${item.size})` : ""}\n   Qty: ${item.quantity} x R${item.price} = R${itemTotal}`;
+      })
+      .join("\n\n");
+
+    // Create complete message
+    const message = `🔥 *New Order from Fiki's Flame Grill & Pizza* 🔥
+
+📋 *Order Details:*
+${orderItems}
+
+💰 *Total Amount: R${total}*
+
+📍 Please confirm my order and let me know the estimated delivery time.
+
+Thank you!`;
+
+    // Open WhatsApp with the message
     const whatsappUrl = `https://wa.me/27813680327?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
