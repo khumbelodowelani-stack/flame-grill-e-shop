@@ -3,7 +3,24 @@ import { Plus, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCart } from "@/contexts/CartContext";
-import { MenuItem } from "@/data/menuData";
+import { MenuItem, categoryImages } from "@/data/menuData";
+
+// Import product images
+import pizzaImg from "@/assets/products/pizza.jpg";
+import ribsImg from "@/assets/products/ribs.jpg";
+import burgerImg from "@/assets/products/burger.jpg";
+import wingsImg from "@/assets/products/wings.jpg";
+import gatsbyImg from "@/assets/products/gatsby.jpg";
+import mixedGrillImg from "@/assets/products/mixed-grill.jpg";
+
+const imageMap: Record<string, string> = {
+  pizza: pizzaImg,
+  ribs: ribsImg,
+  burger: burgerImg,
+  wings: wingsImg,
+  gatsby: gatsbyImg,
+  "mixed-grill": mixedGrillImg,
+};
 
 interface ProductCardProps {
   item: MenuItem;
@@ -22,8 +39,24 @@ export const ProductCard = ({ item }: ProductCardProps) => {
     });
   };
 
+  // Get the image for this category
+  const categoryImageKey = categoryImages[item.category];
+  const productImage = imageMap[categoryImageKey];
+
   return (
     <Card className="group overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-flame-glow">
+      {/* Product Image */}
+      {productImage && (
+        <div className="relative h-48 overflow-hidden bg-muted">
+          <img
+            src={productImage}
+            alt={item.name}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </div>
+      )}
+      
       <CardContent className="p-6">
         <div className="flex flex-col h-full">
           <div className="mb-4">
