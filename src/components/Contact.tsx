@@ -43,7 +43,7 @@ export const Contact = () => {
               <p className="text-muted-foreground mb-4 text-sm">Fiki's Flame Grill & Pizza</p>
               <Button
                 onClick={() =>
-                  window.open("https://www.facebook.com/FikisFlameGrillPizza", "_blank")
+                  window.open("https://www.facebook.com/Fikisflamegrill", "_blank")
                 }
                 variant="outline"
                 className="w-full hover:border-primary hover:text-primary"
