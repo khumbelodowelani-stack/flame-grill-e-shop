@@ -12,6 +12,24 @@ import burgerImg from "@/assets/products/burger.jpg";
 import wingsImg from "@/assets/products/wings.jpg";
 import gatsbyImg from "@/assets/products/gatsby.jpg";
 import mixedGrillImg from "@/assets/products/mixed-grill.jpg";
+import margheritaImg from "@/assets/products/margherita.jpg";
+import salamiImg from "@/assets/products/salami.jpg";
+import chickenPizzaImg from "@/assets/products/chicken-pizza.jpg";
+import tikkaChickenImg from "@/assets/products/tikka-chicken.jpg";
+import butterChickenImg from "@/assets/products/butter-chicken.jpg";
+import beefBurgerImg from "@/assets/products/beef-burger.jpg";
+import smashBurgerImg from "@/assets/products/smash-burger.jpg";
+import chickenMayoImg from "@/assets/products/chicken-mayo.jpg";
+import steakSandwichImg from "@/assets/products/steak-sandwich.jpg";
+import viennaImg from "@/assets/products/vienna.jpg";
+import boerieImg from "@/assets/products/boerie.jpg";
+import hotdogImg from "@/assets/products/hotdog.jpg";
+import periWingsImg from "@/assets/products/peri-wings.jpg";
+import tboneImg from "@/assets/products/tbone.jpg";
+import ribsChipsImg from "@/assets/products/ribs-chips.jpg";
+import chickenGatsbyImg from "@/assets/products/chicken-gatsby.jpg";
+import steakGatsbyImg from "@/assets/products/steak-gatsby.jpg";
+import polonyGatsbyImg from "@/assets/products/polony-gatsby.jpg";
 
 const imageMap: Record<string, string> = {
   pizza: pizzaImg,
@@ -20,6 +38,24 @@ const imageMap: Record<string, string> = {
   wings: wingsImg,
   gatsby: gatsbyImg,
   "mixed-grill": mixedGrillImg,
+  margherita: margheritaImg,
+  salami: salamiImg,
+  "chicken-pizza": chickenPizzaImg,
+  "tikka-chicken": tikkaChickenImg,
+  "butter-chicken": butterChickenImg,
+  "beef-burger": beefBurgerImg,
+  "smash-burger": smashBurgerImg,
+  "chicken-mayo": chickenMayoImg,
+  "steak-sandwich": steakSandwichImg,
+  vienna: viennaImg,
+  boerie: boerieImg,
+  hotdog: hotdogImg,
+  "peri-wings": periWingsImg,
+  tbone: tboneImg,
+  "ribs-chips": ribsChipsImg,
+  "chicken-gatsby": chickenGatsbyImg,
+  "steak-gatsby": steakGatsbyImg,
+  "polony-gatsby": polonyGatsbyImg,
 };
 
 interface ProductCardProps {
@@ -39,9 +75,10 @@ export const ProductCard = ({ item }: ProductCardProps) => {
     });
   };
 
-  // Get the image for this category
-  const categoryImageKey = categoryImages[item.category];
-  const productImage = imageMap[categoryImageKey];
+  // Get the image - use item's specific image or fallback to category image
+  const productImage = item.image 
+    ? imageMap[item.image] || imageMap.pizza
+    : imageMap[categoryImages[item.category]] || imageMap.pizza;
 
   return (
     <Card className="group overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-flame-glow">
