@@ -14,10 +14,10 @@ const Index = () => {
     <CartProvider>
       <div className="min-h-screen">
         <Header onCartClick={() => setCartOpen(true)} />
-        <Hero />
+        {/* <Hero />
         <MenuSection />
         <Contact />
-        <Footer />
+        <Footer /> */}
         <Cart open={cartOpen} onClose={() => setCartOpen(false)} />
       </div>
     </CartProvider>
